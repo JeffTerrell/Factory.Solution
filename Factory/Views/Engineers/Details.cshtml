@@ -27,6 +27,14 @@ else
 @if(@Model.JoinEntitiesMachine.Count == 0)
 {
   <p>This engineer is not licensed to repair any machines.</p>
+  <p>Add a machine to this engineer:</p>
+  @using (Html.BeginForm("AddMachine", "Engineers"))
+  {
+    @Html.HiddenFor(model => model.EngineerId)
+    @Html.Label("Add a machine")
+    @Html.DropDownList("MachineId")
+    <input type="submit" value="Delete"/>
+  }
 }
 else
 {
@@ -35,7 +43,7 @@ else
   @foreach(var join in Model.JoinEntitiesMachine)
   {
     <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</li>
-        @using (Html.BeginForm("DeleteMachine", "Engineers"))
+    @using (Html.BeginForm("DeleteMachine", "Engineers"))
     {
       @Html.Hidden("joinId", @join.EngineerMachineId)
       <input type="submit" value="Delete"/>
