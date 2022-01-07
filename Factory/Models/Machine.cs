@@ -17,8 +17,10 @@ namespace Factory.Models
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]
     public DateTime InstallationDate {get; set;}
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]
     public DateTime InspectionDate { get; set; }
-    
+
     public bool Operational { get; set; } = false;
     public bool Malfunctioning { get; set; } = false;
     public bool UnderRepair { get; set; } = false;

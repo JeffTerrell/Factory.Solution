@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h4>Add a new machine</h4>
+<ul>
+@using (Html.BeginForm())
+{
+  <li>@Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, new {required="required"})</li>
+
+  <li>@Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)</li>
+
+  <li>@Html.LabelFor(model => model.InstallationDate)
+  @Html.EditorFor(model => model.InstallationDate)</li>
+
+  <li>@Html.Label("Most Recent Inspection Date")
+  @Html.EditorFor(model => model.InspectionDate)</li>
+
+  <li>@Html.LabelFor(model => model.Operational)
+  @Html.CheckBoxFor(model => model.Operational)</li>
+
+  <li>@Html.LabelFor(model => model.Malfunctioning)
+  @Html.CheckBoxFor(model => model.Malfunctioning)</li>
+
+  <li>@Html.LabelFor(model => model.UnderRepair)
+  @Html.CheckBoxFor(model => model.UnderRepair)</li>
+
+  <input type="submit" value="Add new machine" class="btn btn-dark"/>
+}
+</ul>
+<p>@Html.ActionLink("View all machines", "Index")</p>
