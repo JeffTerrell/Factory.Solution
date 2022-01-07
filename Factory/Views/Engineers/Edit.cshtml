@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h1>Edit Engineer</h1>
+
+<h3>Edit this engineer: @Html.DisplayFor(model => model.Name)</h3>
+
+<ul>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  <li>@Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)</li>
+
+  <li>@Html.LabelFor(model => model.LicenseRenewalDate)
+  @Html.EditorFor(model => model.LicenseRenewalDate)</li>
+
+  <li>@Html.LabelFor(model => model.Active)
+  @Html.CheckBoxFor(model => model.Active)</li>
+
+  <li>@Html.LabelFor(model => model.Idle)
+  @Html.CheckBoxFor(model => model.Idle)</li>
+
+  <input type="submit" value="Save" class="btn btn-dark"/>
+}
+</ul>
+
+<p>@Html.ActionLink("View all engineers", "Index")</p>
