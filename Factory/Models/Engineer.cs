@@ -16,7 +16,7 @@ namespace Factory.Models
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString="{0:yyyy-MM-dd}", ApplyFormatInEditMode=true)]
-    public DateTime LicenseRenewalDate {get; set;}
+    public DateTime LicenseRenewalDates {get; set;}
 
     public bool Active { get; set; } = false;
     public bool Idle { get; set; } = false;
