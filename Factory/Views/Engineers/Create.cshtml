@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Add an engineer</h2>
+
+<h4>Add a doctor to this task: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new {required="required"})
+
+    @Html.LabelFor(model => model.LicenseRenewalDate)
+    @Html.EditorFor(model => model.LicenseRenewalDate)
+
+    @Html.LabelFor(model => model.Active)
+    @Html.CheckBoxFor(model => model.Active)
+
+    @Html.LabelFor(model => model.Idle)
+    @Html.CheckBoxFor(model => model.Idle)
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("View all engineers", "Index")</p>
