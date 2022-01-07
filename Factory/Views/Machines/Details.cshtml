@@ -9,7 +9,7 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h6>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h6>
 <h3>@Html.DisplayNameFor(model => model.InstallationDate): @Html.DisplayFor(model => model.InstallationDate)</h3>
-<h3>@Html.DisplayNameFor(model => model.InspectionDate): @Html.DisplayFor(model => model.InspectionDate)</h3>
+<h3>@Html.Label("Current Inspection Date"): @Html.DisplayFor(model => model.InspectionDate)</h3>
 @if(@Model.Operational == false)
 {
 }
@@ -47,6 +47,7 @@ else
   </ul>
 }
 
-
+<p>@Html.ActionLink("Edit this machine", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Delete this machine", "Delete", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("View all machines", "Index")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

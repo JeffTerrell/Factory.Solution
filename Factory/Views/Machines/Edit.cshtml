@@ -4,12 +4,17 @@
 
 @model Factory.Models.Machine
 
-<h4>Add a new machine</h4>
+<h1>Edit Machine</h1>
+
+<h3>Edit this machine: @Html.DisplayFor(model => model.Name)</h3>
+
 <ul>
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.MachineId)
+
   <li>@Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name, new {required="required"})</li>
+  @Html.TextBoxFor(model => model.Name)</li>
 
   <li>@Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)</li>
@@ -29,7 +34,8 @@
   <li>@Html.LabelFor(model => model.UnderRepair)
   @Html.CheckBoxFor(model => model.UnderRepair)</li>
 
-  <input type="submit" value="Add new machine" class="btn btn-dark"/>
+  <input type="submit" value="Save" class="btn btn-dark"/>
 }
 </ul>
+
 <p>@Html.ActionLink("View all machines", "Index")</p>
