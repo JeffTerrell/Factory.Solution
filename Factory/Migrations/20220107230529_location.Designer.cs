@@ -3,14 +3,16 @@ using System;
 using Factory.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    partial class FactoryContextModelSnapshot : ModelSnapshot
+    [Migration("20220107230529_location")]
+    partial class location
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,27 +42,6 @@ namespace Factory.Migrations
                     b.ToTable("Engineers");
                 });
 
-            modelBuilder.Entity("Factory.Models.EngineerLocation", b =>
-                {
-                    b.Property<int>("EngineerLocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("EngineerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EngineerLocationId");
-
-                    b.HasIndex("EngineerId");
-
-                    b.HasIndex("LocationId");
-
-                    b.ToTable("EngineerLocation");
-                });
-
             modelBuilder.Entity("Factory.Models.EngineerMachine", b =>
                 {
                     b.Property<int>("EngineerMachineId")
@@ -80,41 +61,6 @@ namespace Factory.Migrations
                     b.HasIndex("MachineId");
 
                     b.ToTable("EngineerMachine");
-                });
-
-            modelBuilder.Entity("Factory.Models.Location", b =>
-                {
-                    b.Property<int>("LocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("LocationId");
-
-                    b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("Factory.Models.LocationMachine", b =>
-                {
-                    b.Property<int>("LocationMachineId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MachineId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LocationMachineId");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("MachineId");
-
-                    b.ToTable("LocationMachine");
                 });
 
             modelBuilder.Entity("Factory.Models.Machine", b =>
@@ -149,25 +95,6 @@ namespace Factory.Migrations
                     b.ToTable("Machines");
                 });
 
-            modelBuilder.Entity("Factory.Models.EngineerLocation", b =>
-                {
-                    b.HasOne("Factory.Models.Engineer", "Engineer")
-                        .WithMany()
-                        .HasForeignKey("EngineerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Factory.Models.Location", "Location")
-                        .WithMany("JoinEntitiesEngineer")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Engineer");
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("Factory.Models.EngineerMachine", b =>
                 {
                     b.HasOne("Factory.Models.Engineer", "Engineer")
@@ -187,34 +114,8 @@ namespace Factory.Migrations
                     b.Navigation("Machine");
                 });
 
-            modelBuilder.Entity("Factory.Models.LocationMachine", b =>
-                {
-                    b.HasOne("Factory.Models.Location", "Location")
-                        .WithMany("JoinEntitiesMachine")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Factory.Models.Machine", "Machine")
-                        .WithMany()
-                        .HasForeignKey("MachineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Location");
-
-                    b.Navigation("Machine");
-                });
-
             modelBuilder.Entity("Factory.Models.Engineer", b =>
                 {
-                    b.Navigation("JoinEntitiesMachine");
-                });
-
-            modelBuilder.Entity("Factory.Models.Location", b =>
-                {
-                    b.Navigation("JoinEntitiesEngineer");
-
                     b.Navigation("JoinEntitiesMachine");
                 });
 

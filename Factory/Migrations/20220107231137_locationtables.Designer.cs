@@ -3,14 +3,16 @@ using System;
 using Factory.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    partial class FactoryContextModelSnapshot : ModelSnapshot
+    [Migration("20220107231137_locationtables")]
+    partial class locationtables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,7 +95,7 @@ namespace Factory.Migrations
 
                     b.HasKey("LocationId");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Loactions");
                 });
 
             modelBuilder.Entity("Factory.Models.LocationMachine", b =>
