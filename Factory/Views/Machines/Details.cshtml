@@ -47,6 +47,8 @@ else
   </ul>
 }
 
+<p>@Html.ActionLink("License an engineer to work on this machine", "AddEngineer", new { id = Model.MachineId })</p>
+
 <p>@Html.ActionLink("Edit this machine", "Edit", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Delete this machine", "Delete", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("View all machines", "Index")</p>
