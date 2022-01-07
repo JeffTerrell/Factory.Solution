@@ -13,48 +13,57 @@
 }
 else
 {
-<h3>@Html.DisplayNameFor(model => model.Active): @Html.DisplayFor(model => model.Active)</h3>
+<h6>@Html.DisplayNameFor(model => model.Active): @Html.DisplayFor(model => model.Active)</h6>
 }
 @if(@Model.Idle == false)
 {
 }
 else
 {
-<h3>@Html.DisplayNameFor(model => model.Idle): @Html.DisplayFor(model => model.Idle)</h3>
+<h6>@Html.DisplayNameFor(model => model.Idle): @Html.DisplayFor(model => model.Idle)</h6>
 }
 
 
 @if(@Model.JoinEntitiesMachine.Count == 0)
 {
   <p>This engineer is not licensed to repair any machines.</p>
-  <p>Add a machine to this engineer:</p>
+  <h4>Add a machine to this engineer</h4>
   @using (Html.BeginForm("AddMachine", "Engineers"))
   {
     @Html.HiddenFor(model => model.EngineerId)
-    @Html.Label("Add a machine")
+    @Html.Label("")
     @Html.DropDownList("MachineId")
-    <input type="submit" value="Delete"/>
+    <input type="submit" value="Add Machine"/>
   }
 }
 else
 {
   <h4>Machines this engineer is licensed to repair:</h4>
-  <ul>
+  
   @foreach(var join in Model.JoinEntitiesMachine)
   {
-    <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</li>
+    @Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })
     @using (Html.BeginForm("DeleteMachine", "Engineers"))
     {
       @Html.Hidden("joinId", @join.EngineerMachineId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Delete Machine"/>
     }
   }
-  </ul>
+  <br>
+  <h4>Add a machine to this engineer</h4>
+  @using (Html.BeginForm("AddMachine", "Engineers"))
+  {
+    @Html.HiddenFor(model => model.EngineerId)
+    @Html.Label("")
+    @Html.DropDownList("MachineId")
+    <input type="submit" value="Add Machine"/>
+  }
 }
+<br>
 
 <p>@Html.ActionLink("Add a machine to this engineer", "AddMachine", new { id = Model.EngineerId })</p>
-
 <p>@Html.ActionLink("Edit this engineer", "Edit", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("Delete this engineer", "Delete", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("View all engineers", "Index")</p>
+<br>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
