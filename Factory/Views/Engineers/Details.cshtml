@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Engineer Details</h2>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h6>@Html.DisplayNameFor(model => model.LicenseRenewalDate): @Html.DisplayFor(model => model.LicenseRenewalDate)</h6>
+@if(@Model.Active == false)
+{
+}
+else
+{
+<h3>@Html.DisplayNameFor(model => model.Active): @Html.DisplayFor(model => model.Active)</h3>
+}
+@if(@Model.Idle == false)
+{
+}
+else
+{
+<h3>@Html.DisplayNameFor(model => model.Idle): @Html.DisplayFor(model => model.Idle)</h3>
+}
+
+
+@if(@Model.JoinEntitiesMachine.Count == 0)
+{
+  <p>This engineer is not licensed to repair any machines.</p>
+}
+else
+{
+  <h4>Machines this engineer is licensed to repair:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntitiesMachine)
+  {
+    <li>@join.Machine.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit this engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete this engineer", "Delete", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("View all engineers", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
