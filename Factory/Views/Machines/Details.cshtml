@@ -1,0 +1,52 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Machine Details</h2>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h6>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h6>
+<h3>@Html.DisplayNameFor(model => model.InstallationDate): @Html.DisplayFor(model => model.InstallationDate)</h3>
+<h3>@Html.DisplayNameFor(model => model.InspectionDate): @Html.DisplayFor(model => model.InspectionDate)</h3>
+@if(@Model.Operational == false)
+{
+}
+else
+{
+<h3>@Html.DisplayNameFor(model => model.Operational): @Html.DisplayFor(model => model.Operational)</h3>
+}
+@if(@Model.Malfunctioning == false)
+{
+}
+else
+{
+<h3>@Html.DisplayNameFor(model => model.Malfunctioning): @Html.DisplayFor(model => model.Malfunctioning)</h3>
+}
+@if(@Model.UnderRepair == false)
+{
+}
+else
+{
+<h3>@Html.DisplayNameFor(model => model.UnderRepair): @Html.DisplayFor(model => model.UnderRepair)</h3>
+}
+
+@if(@Model.JoinEntitiesEngineer.Count == 0)
+{
+  <p>No engineers are licensed to repair this machine</p>
+}
+else
+{
+  <h4>Engineers licensed to repair this machine:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntitiesEngineer)
+  {
+    <li>@join.Engineer.Name</li>
+  }
+  </ul>
+}
+
+
+<p>@Html.ActionLink("View all machines", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
