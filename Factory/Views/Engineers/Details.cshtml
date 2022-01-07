@@ -35,6 +35,11 @@ else
   @foreach(var join in Model.JoinEntitiesMachine)
   {
     <li>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</li>
+        @using (Html.BeginForm("DeleteMachine", "Engineers"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
