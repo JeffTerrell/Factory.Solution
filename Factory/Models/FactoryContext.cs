@@ -6,7 +6,10 @@ namespace Factory.Models
   {
     public DbSet<Machine> Machines { get; set; }
     public DbSet<Engineer> Engineers { get; set; }
+    public DbSet<Location> Loactions { get; set; }
     public DbSet<EngineerMachine> EngineerMachine { get; set; }
+    public DbSet<LocationMachine> LocationMachine { get; set; }
+    public DbSet<EngineerLocation> EngineerLocation { get; set; }
 
     public FactoryContext(DbContextOptions options) : base(options) { }
 
