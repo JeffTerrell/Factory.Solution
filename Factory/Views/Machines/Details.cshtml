@@ -8,28 +8,28 @@
 <hr/>
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h6>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h6>
-<h3>@Html.DisplayNameFor(model => model.InstallationDate): @Html.DisplayFor(model => model.InstallationDate)</h3>
-<h3>@Html.Label("Current Inspection Date"): @Html.DisplayFor(model => model.InspectionDate)</h3>
+<h6>@Html.DisplayNameFor(model => model.InstallationDate): @Html.DisplayFor(model => model.InstallationDate)</h6>
+<h6>@Html.Label("Current Inspection Date"): @Html.DisplayFor(model => model.InspectionDate)</h6>
 @if(@Model.Operational == false)
 {
 }
 else
 {
-<h3>@Html.DisplayNameFor(model => model.Operational): @Html.DisplayFor(model => model.Operational)</h3>
+<h6>@Html.DisplayNameFor(model => model.Operational): @Html.DisplayFor(model => model.Operational)</h6>
 }
 @if(@Model.Malfunctioning == false)
 {
 }
 else
 {
-<h3>@Html.DisplayNameFor(model => model.Malfunctioning): @Html.DisplayFor(model => model.Malfunctioning)</h3>
+<h6>@Html.DisplayNameFor(model => model.Malfunctioning): @Html.DisplayFor(model => model.Malfunctioning)</h6>
 }
 @if(@Model.UnderRepair == false)
 {
 }
 else
 {
-<h3>@Html.DisplayNameFor(model => model.UnderRepair): @Html.DisplayFor(model => model.UnderRepair)</h3>
+<h6>@Html.DisplayNameFor(model => model.UnderRepair): @Html.DisplayFor(model => model.UnderRepair)</h6>
 }
 
 @if(@Model.JoinEntitiesEngineer.Count == 0)
@@ -63,6 +63,7 @@ else
     @Html.HiddenFor(model => model.MachineId)
     @Html.Label("")
     @Html.DropDownList("EngineerId")
+    <br>
     <input type="submit" value="Add Engineer"/>
   }
 }
