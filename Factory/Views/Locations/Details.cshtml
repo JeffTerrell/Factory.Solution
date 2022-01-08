@@ -1,0 +1,88 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Location
+
+<h2>Engineer Details</h2>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntitiesMachine.Count == 0)
+{
+  <p>This location has no machines.</p>
+  <h4>Add a machine to this location:</h4>
+  @using (Html.BeginForm("AddMachine", "Locations"))
+  {
+    @Html.HiddenFor(model => model.LocationId)
+    @Html.Label("")
+    @Html.DropDownList("MachineId")
+    <input type="submit" value="Add Machine"/>
+  }
+}
+else
+{
+  <h4>Machines at this location:</h4>
+  
+  @foreach(var join in Model.JoinEntitiesMachine)
+  {
+    @Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })
+    @using (Html.BeginForm("DeleteMachine", "Locations"))
+    {
+      @Html.Hidden("joinId", @join.LocationMachineId)
+      <input type="submit" value="Delete Machine"/>
+    }
+  }
+  <br>
+    <h4>Add a machine to this location:</h4>
+  @using (Html.BeginForm("AddMachine", "Locations"))
+  {
+    @Html.HiddenFor(model => model.LocationId)
+    @Html.Label("")
+    @Html.DropDownList("MachineId")
+    <input type="submit" value="Add Machine"/>
+  }
+}
+
+@if(@Model.JoinEntitiesEngineer.Count == 0)
+{
+  <p>This location has no engineers.</p>
+  <h4>Add an engineer to this location:</h4>
+  @using (Html.BeginForm("AddEngineer", "Locations"))
+  {
+    @Html.HiddenFor(model => model.LocationId)
+    @Html.Label("")
+    @Html.DropDownList("EngineerId")
+    <input type="submit" value="Add Engineer"/>
+  }
+}
+else
+{
+  <h4>Engineers assigned to this location:</h4>
+  
+  @foreach(var join in Model.JoinEntitiesEngineer)
+  {
+    @Html.ActionLink($"{join.Engineer.Name}", "Details", "Engineers", new { id = join.Engineer.EngineerId })
+    @using (Html.BeginForm("DeleteEngineer", "Locations"))
+    {
+      @Html.Hidden("joinId", @join.EngineerLocationId)
+      <input type="submit" value="Delete Engineer"/>
+    }
+  }
+  <br>
+  <h4>Add an engineer to this location:</h4>
+  @using (Html.BeginForm("AddEngineer", "Locations"))
+  {
+    @Html.HiddenFor(model => model.LocationId)
+    @Html.Label("")
+    @Html.DropDownList("EngineerId")
+    <input type="submit" value="Add Engineer"/>
+  }
+}
+<br>
+
+<p>@Html.ActionLink("Edit this location", "Edit", new { id = Model.LocationId })</p>
+<p>@Html.ActionLink("Delete this location", "Delete", new { id = Model.LocationId })</p>
+<p>@Html.ActionLink("View all locations", "Index")</p>
+<br>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
