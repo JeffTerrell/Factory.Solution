@@ -1,4 +1,4 @@
-# Dr. Sillystringz's Factory Portal
+# Dr. Sillystringz's Factory Manager Portal
 A website that allows users to enter machines, engineers, and associated locations.
 
 #### By Jeff Terrell
