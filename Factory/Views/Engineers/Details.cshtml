@@ -33,6 +33,7 @@ else
     @Html.HiddenFor(model => model.EngineerId)
     @Html.Label("")
     @Html.DropDownList("MachineId")
+    <br>
     <input type="submit" value="Add Machine"/>
   }
 }
@@ -50,12 +51,13 @@ else
     }
   }
   <br>
-  <h4>Add a machine to this engineer</h4>
+  <h6>Add a machine to this engineer</h6>
   @using (Html.BeginForm("AddMachine", "Engineers"))
   {
     @Html.HiddenFor(model => model.EngineerId)
     @Html.Label("")
     @Html.DropDownList("MachineId")
+    <br>
     <input type="submit" value="Add Machine"/>
   }
 }

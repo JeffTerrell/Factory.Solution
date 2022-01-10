@@ -4,7 +4,7 @@
 
 @model Factory.Models.Location
 
-<h2>Engineer Details</h2>
+<h2>Location Details</h2>
 <hr/>
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
@@ -34,16 +34,17 @@ else
     }
   }
   <br>
-    <h4>Add a machine to this location:</h4>
+    <h6>Add a machine to this location:</h6>
   @using (Html.BeginForm("AddMachine", "Locations"))
   {
     @Html.HiddenFor(model => model.LocationId)
     @Html.Label("")
     @Html.DropDownList("MachineId")
+    <br>
     <input type="submit" value="Add Machine"/>
   }
 }
-
+<br>
 @if(@Model.JoinEntitiesEngineer.Count == 0)
 {
   <p>This location has no engineers.</p>
@@ -53,6 +54,7 @@ else
     @Html.HiddenFor(model => model.LocationId)
     @Html.Label("")
     @Html.DropDownList("EngineerId")
+    <br>
     <input type="submit" value="Add Engineer"/>
   }
 }
@@ -70,15 +72,17 @@ else
     }
   }
   <br>
-  <h4>Add an engineer to this location:</h4>
+  <h6>Add an engineer to this location:</h6>
   @using (Html.BeginForm("AddEngineer", "Locations"))
   {
     @Html.HiddenFor(model => model.LocationId)
     @Html.Label("")
     @Html.DropDownList("EngineerId")
+    <br>
     <input type="submit" value="Add Engineer"/>
   }
 }
+<br>
 <br>
 
 <p>@Html.ActionLink("Edit this location", "Edit", new { id = Model.LocationId })</p>

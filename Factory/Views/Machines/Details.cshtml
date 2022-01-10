@@ -35,7 +35,7 @@ else
 @if(@Model.JoinEntitiesEngineer.Count == 0)
 {
   <p>No engineers are licensed to repair this machine</p>
-  <h4>Add an engineer to this machine:</h4>
+  <h6>Add an engineer to this machine:</h6>
   @using (Html.BeginForm("AddEngineer", "Machines"))
   {
     @Html.HiddenFor(model => model.MachineId)
@@ -57,7 +57,7 @@ else
     }
   }
   <br>
-  <h4>Add an engineer to this machine:</h4>
+  <h6>Add an engineer to this machine:</h6>
   @using (Html.BeginForm("AddEngineer", "Machines"))
   {
     @Html.HiddenFor(model => model.MachineId)
