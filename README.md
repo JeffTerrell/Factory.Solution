@@ -34,7 +34,7 @@ Navigate to the sub directory "Factory" of the cloned main directory on your loc
   - _dotnet add package Microsoft.EntityFrameworkCore -v 5.0.0_ 
   - _dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2_
   - _dotnet add package Microsoft.EntityFrameworkCore.Proxies -v 5.0.0_
-  - _dotnet tool install --global dotnet-ef --version 3.0.0	
+  - _dotnet tool install --global dotnet-ef --version 3.0.0_	
 * From the same directory "Factory", create a new file called .appsettings.json.		
 * Open this file with a code editor and add the following:
 
@@ -50,7 +50,7 @@ Navigate to the sub directory "Factory" of the cloned main directory on your loc
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 
 
-## Database Setup/Installation Requirments 
+## Database Setup/Installation Requirements 
 After completing the Setup/Installation requirements follow these steps to create the database schema in MySQL Workbench:
 * From a terminal in the directory "Factory", enter the following command to build the database:
   - _dotnet ef database update
